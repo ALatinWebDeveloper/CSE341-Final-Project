@@ -42,19 +42,18 @@ const getCategoryById = async (req, res) => {
 const createCategory = async (req, res) => {
     //#swagger.tags = ['Categories']
     try {
-
         const newCategory = {
             name: req.body.name,
-            desceiption: req.body.desceiption
+            description: req.body.description
         };
 
-        const categoriesDB = await mongodb().db().collection('categories').insertOne({ newCategory });
+        const response = await mongodb.getDb().db().collection('categories').insertOne({ newCategory });
 
         if (response.acknowledged) {
             res.status(201).json(response);
         }
 
-    } catch {
+    } catch (err) {
         res.status(500).json({ message: err.message });
     }
 }
@@ -75,7 +74,7 @@ const updateCategory = async (req, res) => {
         } else {
             res.status(200).json(response);
         }
-    } catch {
+    } catch (err) {
         res.status(500).json({ message: err.message });
     }
 }
@@ -87,14 +86,14 @@ const deleteCategory = async (req, res) => {
             res.status(400).json({ message: 'Invalid category ID' });
             return;
         }
-        const ProductId = new ObjectId(req.params.id);
-        const response = await mongodb.getDb().db().collection('categories').deleteOne({ _id: ProductId });
+        const categorytId = new ObjectId(req.params.id);
+        const response = await mongodb.getDb().db().collection('categories').deleteOne({ _id: categorytId });
         if (response.deletedCount === 0) {
             res.status(404).json({ message: 'Invalid ID' });
         } else {
             res.status(200).json(response);
         }
-    } catch {
+    } catch (err) {
         res.status(500).json({ message: err.message })
     }
 }
