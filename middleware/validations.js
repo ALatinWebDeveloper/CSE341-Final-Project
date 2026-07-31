@@ -23,4 +23,23 @@ const validateProduct = (req, res, next) => {
     });
 }
 
-module.exports = validateProduct;
+const validateCategory = (req, res, next) => {
+
+    const dataValidation = {
+        name: 'required|string',
+        description: 'required|string'
+    };
+
+    validator(req.body, dataValidation, {}, (err, status) => {
+        if (!status) {
+            res.status(400).send({
+                message: 'Invalid input',
+                data: err
+            });
+        } else {
+            next();
+        }
+    });
+}
+
+module.exports = { validateProduct, validateCategory };

@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const productsController = require('../controllers/products.js');
-const productValidation = require('../middleware/validations.js');
+const { validateProduct } = require('../middleware/validations');
 
 router.get('/', productsController.getAllProducts);
 
 router.get('/:id', productsController.getProductById);
 
-router.post('/', productValidation, productsController.createProduct);
+router.post('/', validateProduct, productsController.createProduct);
 
-router.put('/:id', productValidation, productsController.updateProduct);
+router.put('/:id', validateProduct, productsController.updateProduct);
 
 router.delete('/:id', productsController.deleteProduct);
 

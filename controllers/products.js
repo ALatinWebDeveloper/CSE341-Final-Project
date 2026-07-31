@@ -27,7 +27,7 @@ const getProductById = async (req, res) => {
         const productsDB = await mongodb.getDb().db().collection('products').find({ _id: productId });
 
         if (!productsDB) {
-            res.status(404).json({ message: 'No products storaged' });
+            res.status(404).json({ message: 'No product found with this ID' });
             return;
         }
 
