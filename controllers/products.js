@@ -15,7 +15,7 @@ const getAllProducts = async (req, res) => {
             res.setHeader('Content-Type', 'application/json');
             res.status(200).json(productsDB);
         });
-    } catch {
+    } catch (err) {
         res.status(500).json({ message: err.message });
     }
 }
@@ -35,7 +35,7 @@ const getProductById = async (req, res) => {
             res.setHeader('Content-type', 'application/json');
             res.status(200).json(productsDB);
         });
-    } catch {
+    } catch (err) {
         res.status(500).json({ message: err.message });
     }
 }
@@ -83,7 +83,7 @@ const updateProduct = async (req, res) => {
         } else {
             res.status(200).json(response);
         }
-    } catch {
+    } catch (err) {
         res.status(500).json({ message: err.message });
     }
 }
@@ -102,7 +102,7 @@ const deleteProduct = async (req, res) => {
         } else {
             res.status(200).json(response);
         }
-    } catch {
+    } catch (err) {
         res.status(500).json({ message: err.message })
     }
 }
