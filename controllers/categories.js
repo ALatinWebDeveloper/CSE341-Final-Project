@@ -67,7 +67,7 @@ const updateCategory = async (req, res) => {
             name: req.body.name,
             description: req.body.description
         }
-        const categoryDB = await mongodb.getDb().db().collection('categories').find({ _id: categorytId });
+        const response = await mongodb.getDb().db().collection('categories').find({ _id: categorytId });
 
         if (response.matchedCount === 0) {
             res.status(404).json({ message: 'No categoryt found with this ID' });
