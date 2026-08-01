@@ -27,8 +27,7 @@ const getProductById = async (req, res) => {
         const productsDB = await mongodb.getDb().db().collection('products').find({ _id: productId });
 
         if (!productsDB) {
-            res.status(404).json({ message: 'No product found with this ID' });
-            return;
+            return res.status(404).json({ message: 'No product found with this ID' });
         }
 
         productsDB.toArray().then((productsDB) => {
@@ -76,7 +75,7 @@ const updateProduct = async (req, res) => {
             quantity: req.body.quantity,
             manufacturer: req.body.manufacturer
         }
-        const response = await mongodb.getDb().db().collection('products').find({ _id: productId });
+        const response = await mongodb.getDb().db().collection('products').updateOne({ _id: productId }, { $set: updateProduct });
 
         if (response.matchedCount === 0) {
             res.status(404).json({ message: 'No product found with this ID' });

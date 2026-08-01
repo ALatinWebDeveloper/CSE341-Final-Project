@@ -5,8 +5,8 @@ const doc = {
         title: 'Big store API',
         description: 'API for products and customers',
     },
-    host: 'cse341-final-project-x9ww.onrender.com',
-    schemes: ['https']
+    host: 'localhost:3000',
+    schemes: ['http']
 };
 
 const outputFile = './swagger-output.json';

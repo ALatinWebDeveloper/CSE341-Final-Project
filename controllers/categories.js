@@ -24,15 +24,12 @@ const getCategoryById = async (req, res) => {
     //#swagger.tags = ['Categories']
     try {
         const categoryId = new ObjectId(req.params.id);
-        const categoriesDB = await mongodb.getDb().db().collection('categories').find({ _id: ObjectId });
+        const result = await mongodb.getDb().db().collection('categories').findOne({ _id: categoryId });
 
-        if (!categoriesDB) {
-            res.status(404).json({ message: 'No category found with this ID' });
+        if (!result) {
+            return res.status(404).json({ message: 'No category found with this ID' });
         }
-        categoriesDB.toArray().then((categoriesDB) => {
-            res.setHeader('Content-Type', 'application/json');
-            res.status(200).json({ categoriesDB });
-        });
+        res.status(200).json(result);
 
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -47,7 +44,7 @@ const createCategory = async (req, res) => {
             description: req.body.description
         };
 
-        const response = await mongodb.getDb().db().collection('categories').insertOne({ newCategory });
+        const response = await mongodb.getDb().db().collection('categories').insertOne(newCategory);
 
         if (response.acknowledged) {
             res.status(201).json(response);
@@ -67,7 +64,7 @@ const updateCategory = async (req, res) => {
             name: req.body.name,
             description: req.body.description
         }
-        const response = await mongodb.getDb().db().collection('categories').find({ _id: categorytId });
+        const response = await mongodb.getDb().db().collection('categories').updateOne({ _id: categorytId }, { $set: updateCategory });
 
         if (response.matchedCount === 0) {
             res.status(404).json({ message: 'No categoryt found with this ID' });
