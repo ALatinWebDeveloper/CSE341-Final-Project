@@ -26,6 +26,7 @@
     "mongodb": "^7.5.0",
     "mongoose": "^9.8.1",
     "nodemon": "^3.1.14",
+    "swagger-ui-express": "^5.0.1",
     "validatorjs": "^3.22.1"
   }
 }
