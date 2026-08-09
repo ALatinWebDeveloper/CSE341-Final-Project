@@ -42,4 +42,43 @@ const validateCategory = (req, res, next) => {
     });
 }
 
-module.exports = { validateProduct, validateCategory };
+const validateOrder = (req, res, next) => {
+
+    const dataValidation = {
+        orderDate: 'required|string',
+        totalAmount: 'required|numeric',
+        status: 'required|string'
+    };
+
+    validator(req.body, dataValidation, {}, (err, status) => {
+        if (!status) {
+            res.status(400).send({
+                message: 'Invalid input',
+                data: err
+            });
+        } else {
+            next();
+        }
+    });
+}
+
+const validateReview = (req, res, next) => {
+
+    const dataValidation = {
+        name: 'required|string',
+        review: 'required|string'
+    };
+
+    validator(req.body, dataValidation, {}, (err, status) => {
+        if (!status) {
+            res.status(400).send({
+                message: 'Invalid input',
+                data: err
+            });
+        } else {
+            next();
+        }
+    });
+}
+
+module.exports = { validateProduct, validateCategory, validateOrder, validateReview };
