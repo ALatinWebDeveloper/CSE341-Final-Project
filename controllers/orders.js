@@ -38,6 +38,10 @@ const getOrdersById = async (req, res) => {
 
 const createOrder = async (req, res) => {
     //#swagger.tags = ['Orders']
+    /*  #swagger.security = [{
+            "bearerAuth": []
+        }] 
+    */
     try {
         const newOrder = {
             userId: req.body.userId,
@@ -60,6 +64,10 @@ const createOrder = async (req, res) => {
 
 const updateOrder = async (req, res) => {
     //#swagger.tags = ['Orders']
+    /*  #swagger.security = [{
+            "bearerAuth": []
+        }] 
+    */
     try {
         const orderId = new ObjectId(req.params.id);
 
@@ -83,6 +91,10 @@ const updateOrder = async (req, res) => {
 
 const deleteOrder = async (req, res) => {
     //#swagger.tags = ['Orders']
+    /*  #swagger.security = [{
+            "bearerAuth": []
+        }] 
+    */
     try {
         if (!ObjectId.isValid(req.params.id)) {
             res.status(400).json({ message: 'Invalid order ID' });

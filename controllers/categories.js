@@ -38,6 +38,10 @@ const getCategoryById = async (req, res) => {
 
 const createCategory = async (req, res) => {
     //#swagger.tags = ['Categories']
+    /*  #swagger.security = [{
+            "bearerAuth": []
+        }] 
+    */
     try {
         const newCategory = {
             name: req.body.name,
@@ -57,6 +61,10 @@ const createCategory = async (req, res) => {
 
 const updateCategory = async (req, res) => {
     //#swagger.tags = ['Categories']
+    /*  #swagger.security = [{
+            "bearerAuth": []
+        }] 
+    */
     try {
         const categorytId = new ObjectId(req.params.id);
 
@@ -78,6 +86,10 @@ const updateCategory = async (req, res) => {
 
 const deleteCategory = async (req, res) => {
     //#swagger.tags = ['Categories']
+    /*  #swagger.security = [{
+            "bearerAuth": []
+        }] 
+    */
     try {
         if (!ObjectId.isValid(req.params.id)) {
             res.status(400).json({ message: 'Invalid category ID' });

@@ -41,6 +41,10 @@ const getProductById = async (req, res) => {
 
 const createProduct = async (req, res) => {
     //#swagger.tags = ['Products']
+    /*  #swagger.security = [{
+            "bearerAuth": []
+        }] 
+    */
     try {
         const newProduct = {
             name: req.body.name,
@@ -65,6 +69,10 @@ const createProduct = async (req, res) => {
 
 const updateProduct = async (req, res) => {
     //#swagger.tags = ['Products']
+    /*  #swagger.security = [{
+            "bearerAuth": []
+        }] 
+    */
     try {
         const productId = new ObjectId(req.params.id);
         const updateProduct = {
@@ -89,6 +97,10 @@ const updateProduct = async (req, res) => {
 
 const deleteProduct = async (req, res) => {
     //#swagger.tags = ['Products']
+    /*  #swagger.security = [{
+            "bearerAuth": []
+        }] 
+    */
     try {
         if (!ObjectId.isValid(req.params.id)) {
             res.status(400).json({ message: 'Invalid product ID' });

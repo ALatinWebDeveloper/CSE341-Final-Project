@@ -41,6 +41,10 @@ const getReviewById = async (req, res) => {
 
 const createReview = async (req, res) => {
     //#swagger.tags = ['Reviews']
+    /*  #swagger.security = [{
+            "bearerAuth": []
+        }] 
+    */
     try {
         const newReview = {
             name: req.body.name,
@@ -61,6 +65,10 @@ const createReview = async (req, res) => {
 
 const updateReview = async (req, res) => {
     //#swagger.tags = ['Reviews']
+    /*  #swagger.security = [{
+            "bearerAuth": []
+        }] 
+    */
     try {
         const reviewId = new ObjectId(req.params.id);
         const updateReview = {
@@ -81,6 +89,10 @@ const updateReview = async (req, res) => {
 
 const deleteReview = async (req, res) => {
     //#swagger.tags = ['Reviews']
+    /*  #swagger.security = [{
+            "bearerAuth": []
+        }] 
+    */
     try {
         if (!ObjectId.isValid(req.params.id)) {
             res.status(400).json({ message: 'Invalid review ID' });

@@ -1,14 +1,29 @@
-const swaggerAutogen = require('swagger-autogen')();
+const swaggerAutogen = require('swagger-autogen')({ openapi: '3.0.0' });
 
 const doc = {
     info: {
         title: 'Big store API',
         description: 'API for products and customers',
     },
-    host: 'cse341-final-project-x9ww.onrender.com',
-    schemes: ['https'],
-    host: 'localhost:3000',
-    schemes: ['http']
+    servers: [
+        {
+            url: 'https://cse341-final-project-x9ww.onrender.com',
+            description: 'Production Server'
+        },
+        {
+            url: 'http://localhost:3000',
+            description: 'Test Server'
+        }
+    ],
+    components: {
+        securitySchemes: {
+            bearerAuth: {
+                type: 'http',
+                scheme: 'bearer',
+                bearerFormat: 'JWT'
+            }
+        }
+    }
 };
 
 const outputFile = './swagger-output.json';
