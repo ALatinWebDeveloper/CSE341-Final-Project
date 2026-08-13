@@ -7,12 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://cse341-final-project-x9ww.onrender.com",
-      "description": "Production Server"
-    },
-    {
-      "url": "http://localhost:3000",
-      "description": "Test Server"
+      "url": "https://cse341-final-project-x9ww.onrender.com/"
     }
   ],
   "paths": {
@@ -969,7 +964,7 @@
   "components": {
     "securitySchemes": {
       "bearerAuth": {
-        "type": "http",
+        "type": "https",
         "scheme": "bearer",
         "bearerFormat": "JWT"
       }

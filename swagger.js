@@ -5,20 +5,12 @@ const doc = {
         title: 'Big store API',
         description: 'API for products and customers',
     },
-    servers: [
-        {
-            url: 'https://cse341-final-project-x9ww.onrender.com',
-            description: 'Production Server'
-        },
-        {
-            url: 'http://localhost:3000',
-            description: 'Test Server'
-        }
-    ],
+    host: 'cse341-final-project-x9ww.onrender.com',
+    schemes: ['https'],
     components: {
         securitySchemes: {
             bearerAuth: {
-                type: 'http',
+                type: 'https',
                 scheme: 'bearer',
                 bearerFormat: 'JWT'
             }
