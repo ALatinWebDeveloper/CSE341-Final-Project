@@ -75,7 +75,8 @@ const updateOrder = async (req, res) => {
             userId: req.body.userId,
             orderDate: req.body.orderDate,
             totalAmount: req.body.totalAmount,
-            status: req.body.status
+            status: req.body.status,
+            items: req.body.items
         }
         const response = await mongodb.getDb().db().collection('orders').updateOne({ _id: orderId }, { $set: updateOrder });
 

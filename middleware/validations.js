@@ -47,7 +47,8 @@ const validateOrder = (req, res, next) => {
     const dataValidation = {
         orderDate: 'required|string',
         totalAmount: 'required|numeric',
-        status: 'required|string'
+        status: 'required|string',
+        items: 'required|array'
     };
 
     validator(req.body, dataValidation, {}, (err, status) => {
